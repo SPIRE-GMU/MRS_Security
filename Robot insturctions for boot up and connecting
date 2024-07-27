@@ -1,0 +1,67 @@
+Set up and Boot up of Robots
+
+Step 1)
+
+run roscore on laptop terminal
+
+Step 2) 
+
+ssh into each robot with there respected ips 
+Example: ssh pi@ ip address goes here
+
+
+Step 3)
+When ssh into each robot run the bring up command in each robots respective terminal
+
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+Step 4)
+
+on host terminal which is your pc terminal run 
+
+ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+This command  makes the  robot tb3_1 
+the master robot and and allows for listener robots to connect to it.
+
+ 
+Step 5)
+ssh into the two listener robots 
+and run rosrun mrs_package mrs_teleop.py
+which runs the listener nodes to be able to connect the robots to master robot so that have a connection and that able to make all robots move togther at the same time.
+
+Step 6)
+go to the hosterminal with the teleop and move the robots.
+
+
+Once Completeing all of these steps you should have a fully functioning setup of the turtlebots which should all be up and running and connected to the master 
+and listening and mimic the move of the master which you can control through the teleop command.
+
+Trouble shooting tips if your having trouble with connecting the robots make sure that the robots and your host terminal are on the 
+same network. This will not work if the robot and the host are on different terminals.
+
+
+The ips for the robots should be in the lab on pieces of paper on top of each robot
+
+how ever if you dont have the ips for the robots turn on each robot threw the little switch on the back and plug in the robots into a monitor with an hdmi cable and make sure the 
+robots are all connected to the turtlebot router after this step go open a termianl in each robot and the ifconfig command there should be a host of things popping up however the only thing you need
+is the frist ip address you see it should be right next to the word inet and there should be an ip that is the ip you need to ssh into the robot.
+IMPORTANT the first inet you see is the ip address not the second one
+
+Example:   inet 192.168.1.176
+
+Important commands
+
+catkin_make // builds packages
+
+roscore // for master node
+
+rqt_graph // visual graph repersetnation of cnnection between nodes
+
+roslaucnh slam_toolbox.launch  // how to launch slam node
+
+roslaunch turtlebot3_gazebo turtlebot3_teleop_key.launch // launches turtlebot3 int gazebo
+
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch // Teleoperate turtelbot in gazebo
+
+Good luck and have fun with the project.
